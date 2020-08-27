@@ -25,6 +25,29 @@ def test_as_is():
     assert(out == expected)
 
 
+def test_indent_4_spaces():
+    input_value = '''{
+  'hired': {
+    'be': {
+      'to': {
+        'deserve': 'I'
+      }
+    }
+  }
+}'''
+    expected = '''{
+    'I': {
+        'deserve': {
+            'to': {
+                'be': 'hired'
+            }
+        }
+    }
+}'''
+    out = reverse_nested_value(input_value, 4)
+    assert(out == expected)
+
+
 def test_extra_curly_brace():
     input_value = '''{
   'hired': {
@@ -79,4 +102,3 @@ def test_orphan_characters():
 }'''
     with pytest.raises(InvalidFormat):
         reverse_nested_value(input_value, 2)
-

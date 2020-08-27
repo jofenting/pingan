@@ -1,13 +1,16 @@
 '''
-doc string
+author: https://github.com/jofenting/
+2020-08-27
 '''
 
 
+# Custom exception type
 class InvalidFormat(Exception):
     def __init__(self, message):
         super(InvalidFormat, self).__init__(message)
 
 
+# Convert string to string array object
 def deserialize(src: str) -> list:
     stack = []
     word = ''
@@ -41,6 +44,7 @@ def deserialize(src: str) -> list:
     return sentence
 
 
+# Convert string array object to string
 def serialize(words: list, indent: int = 4) -> str:
     out = ''
     padding_stack = []
@@ -58,6 +62,7 @@ def serialize(words: list, indent: int = 4) -> str:
     return '{\n' + out + '}'
 
 
+# Reverse nested value in given format.
 def reverse_nested_value(input_value: str, indent: int = 4) -> str:
     words = deserialize(input_value)
     words.reverse()
